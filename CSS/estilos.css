@@ -1,0 +1,55 @@
+.caixa-bordas-redondas {
+    border: 1px solid black;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fig-wireframe {
+    figcaption {
+        text-align: center;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.destaque {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.box-wireframe {
+    border: 2px dashed #1e88e5;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+.icone {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+body {
+    font-family: sans-serif, Arial, Helvetica;
+    font-size: 1.5em;
+}
+
+
+.estrutura {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    }
