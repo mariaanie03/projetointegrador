@@ -25,22 +25,15 @@
 
     <nav class="main-nav">
         <ul>
-            <li><span 
-                  data-target="about-content" 
-                  class="nav-link">Sobre</span ></li>
-            <li><span 
+            <li><a href="Sobre" data-target="about-content" 
+                class="nav-link">Sobre</a></li>
+            <li><a xhref="TiposdePresentesPersonalizados.html" 
                    data-target="home-content" 
-                   class="nav-link">Tipos de Presentes Personalizados
-                </span>
+                   class="nav-link active">Tipos de Presentes Personalizados
+                </a>
             </li>
-            <li><span 
-                   data-target="product-display-content" 
-                   data-content-source="metodos" 
-                   class="nav-link">Métodos de Personalização</a></li>
-            <li><span 
-                   data-target="product-display-content" 
-                   data-content-source="dicas" 
-                   class="nav-link">Dicas e Inspirações</span></li>
+            <li><a href="MétodosdePersonalização.html" data-target="product-display-content" data-content-source="metodos" class="nav-link">Métodos de Personalização</a></li>
+            <li><a href="DicaseInspirações.html" data-target="product-display-content" data-content-source="dicas" class="nav-link">Dicas e Inspirações</a></li>
         </ul>
     </nav>
 
@@ -49,12 +42,7 @@
         <section id="home-content" class="content-section active">
             <div class="home-column">
                 <h3>Tipos de Presentes</h3>
-                <button class="sub-link-button" 
-                    data-content-key="datas-especiais"
-                    onclick="window.open('TiposdePresentesPersonalizados.html', '_blank')"
-                    >
-                    Presentes para Datas Especiais
-                </button>
+                <button class="sub-link-button" data-content-key="datas-especiais">Presentes para Datas Especiais</button>
                 <button class="sub-link-button" data-content-key="corporativos">Presentes Corporativos</button>
                 <button class="sub-link-button" data-content-key="criativos">Presentes Criativos</button>
             </div>
@@ -144,6 +132,6 @@
         <p> © 2025 Personalized Gift Shop</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
