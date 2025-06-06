@@ -81,19 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 activeNavLink.classList.add('active');
             }
 
-            // Se for a seção de display e tiver uma fonte de conteúdo, atualize-a
-            if (targetId === 'product-display-content' && contentSourceKey && pageContents[contentSourceKey]) {
-                const content = pageContents[contentSourceKey];
-                if (dynamicProductTitle) dynamicProductTitle.textContent = content.title;
-                if (dynamicProductDescription) dynamicProductDescription.textContent = content.description;
-                // if (dynamicProductImage && content.image) dynamicProductImage.src = content.image;
-                // else if (dynamicProductImage) dynamicProductImage.src = "https://placehold.co/400x300/e0e0e0/777?text=Conteúdo"; // Placeholder
-            } else if (targetId === 'product-display-content' && !contentSourceKey) {
-                // Limpa se nenhum conteúdo específico for passado
-                if (dynamicProductTitle) dynamicProductTitle.textContent = "Selecione uma Categoria";
-                if (dynamicProductDescription) dynamicProductDescription.textContent = "Escolha um dos links para ver mais detalhes ou navegue pelas categorias principais.";
-            }
-
         } else {
             console.warn(`Seção com ID "${targetId}" não encontrada.`);
         }

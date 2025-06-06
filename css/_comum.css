@@ -1,0 +1,88 @@
+/* Reset Básico e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(to bottom, #4A90E2, #357ABD); /* Azul do mockup */
+    color: white;
+    font-family: cursive;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(45deg); /* Para o 'X' parecer um losango */
+}
+.logo span {
+    transform: rotate(-45deg);
+}
+
+
+.site-name {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* Navegação Principal */
+.main-nav {
+    background-color: #f8f8f8;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens da nav */
+}
+
+.main-nav ul li {
+    margin: 0;
+}
+
+.main-nav ul li a, span {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: white;
+    background-color: #5D9CEC; /* Azul dos botões */
+    margin: 10px 5px; /* Espaçamento entre botões */
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    background-color: #4A80D3; /* Azul mais escuro para hover/active */
+}
+
