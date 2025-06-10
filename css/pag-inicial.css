@@ -58,6 +58,10 @@ main {
     display: block; /* A seção ativa é mostrada */
 }
 
+
+
+
+
 /* Estilos para Home Content (Mockup 1) */
 #home-content {
     display: none; /* Será 'flex' quando ativo */
@@ -67,7 +71,6 @@ main {
 #home-content.active {
     display: flex; /* Mostrar como flex quando ativo */
 }
-
 
 .home-column {
     flex: 1;

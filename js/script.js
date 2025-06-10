@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function showSection(targetId, contentSourceKey = null) {
-        contentSections.forEach(section => {
+        contentSections.forEach(section => {        
             section.classList.remove('active');
         });
         navLinks.forEach(link => {
@@ -95,17 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
             showSection(targetId, contentSource);
         });
     });
-
-    // Sub-links da página inicial
-    // Descomentar para fazer o conteúdo aparecer na mesma página!!!
-    /*
-    subLinkButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const contentKey = this.dataset.contentKey;
-            showSection('product-display-content', contentKey);
-        });
-    });
-    */
 
     // Ícone do carrinho leva para a página de login
     if (cartIconButton) {
@@ -158,6 +147,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+     // Função para atualizar a cor
+            function atualizarCor() {
+                const corEscolhida = seletorDeCor.value; // Pega o valor hexadecimal da cor (ex: #RRGGBB)
+                
+                // Aplica a cor ao fundo do elemento de exemplo
+                if (elementoParaColorir) {
+                    elementoParaColorir.style.backgroundColor = corEscolhida;
+                }
+
+                // Mostra o valor hexadecimal da cor
+                if (textoCorSelecionada) {
+                    textoCorSelecionada.textContent = 'Cor atual: ' + corEscolhida.toUpperCase();
+                }
+
+                // Aqui você pode fazer outras coisas com a cor, como:
+                // - Mudar a cor do texto: elementoParaColorir.style.color = corEscolhida;
+                // - Enviar para um servidor
+                // - Salvar no localStorage, etc.
+                console.log('Cor selecionada:', corEscolhida);
+            }
+
+            // Define a cor inicial baseada no valor do input
+            if (seletorDeCor && elementoParaColorir) {
+                 atualizarCor(); // Chama uma vez para definir o estado inicial
+            }
+
+            // Adiciona um ouvinte de evento para quando a cor mudar
+            // 'input' é disparado continuamente enquanto o usuário interage com o seletor
+            // 'change' é disparado quando o seletor é fechado ou o valor final é confirmado
+            if (seletorDeCor) {
+                seletorDeCor.addEventListener('input', atualizarCor);
+            }
+
 
     // Mostrar a seção inicial (home)
     showSection('home-content');
