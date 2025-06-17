@@ -1,0 +1,279 @@
+@import url('_comum.css');
+
+#search-form {
+    display: flex;
+    margin-right: 20px;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px 0 0 20px;
+    font-size: 0.9em;
+    outline: none;
+}
+#search-input:focus {
+    border-color: #fff;
+}
+
+#search-form button {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    color: #333;
+}
+#search-form button:hover {
+    background-color: #e0e0e0;
+}
+
+
+.cart-icon {
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Área de Conteúdo Principal */
+main {
+    padding: 20px;
+    min-height: calc(100vh - 250px); /* Ajuste conforme altura do header/footer */
+}
+
+.content-section {
+    display: none; /* Todas as seções começam escondidas */
+    padding: 0;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+   
+}
+
+.content-section p{
+    text-align: justify;}
+
+.content-section.active {
+    display: block; /* A seção ativa é mostrada */
+}
+
+
+
+
+
+/* Estilos para Home Content (Mockup 1) */
+#home-content {
+    display: none; /* Será 'flex' quando ativo */
+    gap: 20px;
+    justify-content: space-around;
+}
+#home-content.active {
+    display: flex; /* Mostrar como flex quando ativo */
+}
+
+.home-column {
+    flex: 1;
+    min-width: 200px; /* Evita que fiquem muito estreitas */
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.home-column h3 {
+    margin-bottom: 15px;
+    color: #4A90E2;
+    text-align: center;
+    font-size: 1.1em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.sub-link-button {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sub-link-button:hover {
+    background-color: #f0f0f0;
+    border-color: #bbb;
+}
+
+/* Estilos para Product Display (Mockup 2) */
+#product-display-content {
+    display: none; /* Será 'flex' quando ativo */
+    /* Se você quiser que o product-details-area fique centralizado, pode adicionar: */
+    /* justify-content: center; */ 
+    /* align-items: center; */ /* ou flex-start dependendo do alinhamento vertical desejado */
+}
+#product-display-content.active {
+    display: flex; /* Mantido como flex para consistência e futuras adições, se houver */
+}
+
+/* REMOVIDO O ESTILO .product-image-placeholder */
+/*
+.product-image-placeholder {
+    flex: 1;
+    background-color: #f0f0f0; 
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 300px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 1px solid #ddd;
+}
+*/
+
+.product-details-area {
+    flex: 1; /* Agora pode ser flex: 1 ou width: 100% se for o único item */
+    width: 100%; /* Para garantir que ocupe toda a largura se for o único filho */
+    border: 1px solid #e0e0e0; /* Borda como no mockup */
+    padding: 20px;
+    min-height: 300px; /* Altura mínima */
+}
+.product-details-area h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+.product-details-area p {
+    color: #555;
+}
+
+
+/* Estilos para Login Content (Mockup 3) */
+#login-content {
+    display: none; /* Será 'flex' quando ativo */
+    justify-content: center;
+    align-items: flex-start; /* Alinha itens ao topo */
+    gap: 20px;
+}
+#login-content.active {
+    display: flex;
+}
+
+.login-options {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-basis: 200px; /* Largura base */
+}
+.login-options button {
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.login-options button:hover {
+    background-color: #f0f0f0;
+}
+
+.login-form-container {
+    flex-grow: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px; /* Limita a largura do form */
+}
+.login-form-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#actual-login-form div {
+    margin-bottom: 15px;
+}
+#actual-login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+#actual-login-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#actual-login-form button {
+    display: block;
+    width: auto; /* Ajusta ao conteúdo */
+    padding: 10px 25px;
+    background-color: #5D9CEC;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px auto 0; /* Centraliza o botão */
+}
+#actual-login-form button:hover {
+    background-color: #4A80D3;
+}
+
+.login-purchase-info {
+    flex-basis: 200px;
+    text-align: right;
+    font-style: italic;
+}
+
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to top, #4A90E2, #357ABD); /* Azul do mockup */
+    color: white;
+    margin-top: 30px;
+}
+
+/* Responsividade básica */
+@media (max-width: 900px) {
+    #home-content.active,
+    #product-display-content.active, /* Ajustado para aplicar também à product-display */
+    #login-content.active {
+        flex-direction: column;
+    }
+    .product-details-area { /* Garante que ocupe a largura toda em telas menores */
+        width: 100%;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-nav ul li a {
+        width: 90%;
+        text-align: center;
+    }
+    .header-actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    #search-form {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .site-name {
+        order: -1; /* Coloca o nome do site primeiro na coluna */
+    }
+}
+

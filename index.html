@@ -11,6 +11,13 @@
 </head>
 
 <body>
+
+<script type="module">
+        // Import createClient directly from the CDN URL
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+        window.myCreateSupabaseClient = createClient;
+    </script>
+
     <header>
         <div class="logo">X</div>
         <div class="site-name">Personalized Gift Shop</div>
@@ -159,6 +166,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script type="module" src="js/supabaseClient.js"></script>
 </body>
 
 </html>
