@@ -236,6 +236,11 @@ main {
 }
 
 
+/* Adicione esta classe para controlar a visibilidade com JavaScript */
+.escondido {
+    display: none !important;
+}
+
 /* Estilos para Login Content (Mockup 3) */
 #login-content {
     display: none; /* Será 'flex' quando ativo */
@@ -357,6 +362,3 @@ footer {
     }
 }
 
-#quadrados{
-    border:2px;
-}

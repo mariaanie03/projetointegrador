@@ -24,6 +24,41 @@ header {
     font-family: cursive;
 }
 
+
+#search-form {
+    display: flex;
+    margin-right: 20px;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px 0 0 20px;
+    font-size: 0.9em;
+    outline: none;
+}
+#search-input:focus {
+    border-color: #fff;
+}
+
+#search-form button {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    color: #333;
+}
+#search-form button:hover {
+    background-color: #e0e0e0;
+}
+
+.cart-icon {
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
 .logo {
     font-size: 2em;
     font-weight: bold;
@@ -50,7 +85,10 @@ header {
     align-items: center;
 }
 
-
+/* Adicione esta classe para controlar a visibilidade com JavaScript */
+.escondido {
+    display: none !important;
+}
 
 /* Navegação Principal */
 .main-nav {

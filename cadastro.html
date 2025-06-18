@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie sua Conta - Nome do Site</title>
+    <!-- Usando o mesmo CSS da página inicial para consistência visual -->
+    <link rel="stylesheet" href="CSS/cadastro.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">X</div>
+        <div class="site-name">Nome do Site</div>
+        <div class="header-actions">
+            <form id="search-form">
+                <input type="search" id="search-input" placeholder="Buscar...">
+                <button type="submit" aria-label="Buscar">🔍</button>
+            </form>
+            <div class="cart-icon" id="cart-icon-btn" aria-label="Carrinho de Compras">🛒</div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="TiposdePresentesPersonalizados.html" class="nav-link">Tipos de Presentes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="register-section" class="content-section active">
+            <div class="login-form-container">
+                
+                <form id="registration-form">
+                    <fieldset>
+                        <legend>Dados Pessoais</legend>
+                        <div>
+                            <label for="nome-completo">Nome Completo:</label>
+                            <input type="text" id="nome-completo" name="nome-completo" required placeholder="Seu nome completo">
+                        </div>
+                        <div class="form-row">
+                            <div>
+                                <label for="email">E-mail:</label>
+                                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                            </div>
+                            <div>
+                                <label for="telefone">Telefone / Celular:</label>
+                                <input type="tel" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Endereço de Entrega</legend>
+                        <div>
+                            <label for="cep">CEP:</label>
+                            <input type="text" id="cep" name="cep" required placeholder="Apenas números">
+                        </div>
+                        <div class="form-row">
+                             <div>
+                                <label for="logradouro">Rua / Avenida:</label>
+                                <input type="text" id="logradouro" name="logradouro" required>
+                            </div>
+                            <div>
+                                <label for="numero">Número:</label>
+                                <input type="text" id="numero" name="numero" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="complemento">Complemento (Opcional):</label>
+                            <input type="text" id="complemento" name="complemento" placeholder="Apto, Bloco, Casa">
+                        </div>
+                         <div class="form-row">
+                            <div>
+                                <label for="bairro">Bairro:</label>
+                                <input type="text" id="bairro" name="bairro" required>
+                            </div>
+                            <div>
+                                <label for="cidade">Cidade:</label>
+                                <input type="text" id="cidade" name="cidade" required>
+                            </div>
+                            <div>
+                                <label for="estado">Estado:</label>
+                                <input type="text" id="estado" name="estado" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Senha de Acesso</legend>
+                        <div class="form-row">
+                            <div>
+                                <label for="senha">Crie uma Senha:</label>
+                                <input type="password" id="senha" name="senha" required minlength="6" placeholder="Mínimo 6 caracteres">
+                            </div>
+                            <div>
+                                <label for="confirmar-senha">Confirme a Senha:</label>
+                                <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                     <fieldset>
+                        <legend>Termos e Condições</legend>
+                        <div class="terms-container">
+                             <input type="checkbox" id="termos" name="termos" required>
+                             <label for="termos">Eu li e aceito os <a href="/termos.html" target="_blank">Termos e Condições</a> do site.</label>
+                        </div>
+                    </fieldset>
+                    
+                    <button type="submit">Finalizar Cadastro</button>
+                </form>
+
+                
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p> © 2025 Personalized Gift Shop</p>
+    </footer>
+
+    <script src="js/java.js"></script>
+</body>
+</html>

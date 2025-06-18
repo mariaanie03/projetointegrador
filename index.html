@@ -45,6 +45,12 @@
         </ul>
     </nav>
 
+
+    <ul>
+        <li></li>
+    </ul>
+
+
     <main>
         <!-- Seção da Página Inicial (Mockup 1) -->
         <section id="home-content" class="content-section active">
@@ -67,11 +73,12 @@
                 <h3>Dicas e Inspirações</h3>
                 <button class="sub-link-button" data-content-key="tendencias" onclick="window.open('personalizados.html', '_blank')">
                     Tendências em Presentes Personalizados</button>
-                <button class="sub-link-button" data-content-key="ocasioes"onclick="window.open('DicaseInspirações.html', '_blank')">Presentes para Diferentes Ocasiões</button>
+                <button class="sub-link-button" data-content-key="ocasioes"onclick="window.open('ocasiões.html', '_blank')">Presentes para Diferentes Ocasiões</button>
                 <button class="sub-link-button" data-content-key="depoimentos"onclick="window.open('DicaseInspirações.html', '_blank')">Depoimentos e Experiências</button>
             </div>
         </section>
 
+       
         <!-- Seção de Display de Produto/Conteúdo (Mockup 2) -->
         <section id="product-display-content" class="content-section">
             <!-- A div .product-image-placeholder foi removida daqui -->
@@ -80,34 +87,39 @@
                 <p id="dynamic-product-description">Descrição detalhada do produto ou conteúdo aparecerá aqui. Selecione
                     um item para ver os detalhes.</p>
             </div>
+
+
         </section>
 
         <!-- Seção de Login/Carrinho (Mockup 3) -->
-        <section id="login-content" class="content-section">
-            <div class="login-form-container">
-                <h3>Login</h3>
-                <form id="actual-login-form">
-                    <div>
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
-                    </div>
-                    <div>
-                        <label for="senha">Senha:</label>
-                        <input type="password" id="senha" name="senha" required placeholder="********">
-                    </div>
-                    <button type="submit">Entrar</button>
-                </form>
-                <div class="login-options">
-                    <button id="btn-nao-tenho-cadastro">Não Possuo Cadastro</button>
-                    <button id="btn-tenho-cadastro">Possuo Cadastro</button>
-                </div>
-
+           <!-- Seção de Login/Carrinho (MODIFICADA PARA CADASTRO) -->
+   <!-- Seção de Login/Carrinho (SIMPLIFICADA) -->
+<section id="login-content" class="content-section">
+    <div class="login-form-container">
+        <h3>Login</h3>
+        
+        <form id="actual-login-form">
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
             </div>
-            <div class="login-purchase-info">
-                <p>← Para realizar a compra</p>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required placeholder="********">
             </div>
-        </section>
+            <button type="submit">Entrar</button>
+        </form>
 
+        <div class="login-options" style="margin-top: 15px;">
+            <!-- O BOTÃO AGORA É UM LINK DIRETO PARA A PÁGINA DE CADASTRO -->
+            <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>.</p>
+        </div>
+
+    </div>
+    <div class="login-purchase-info">
+        <p>← Para realizar a compra</p>
+    </div>
+</section>
         <!-- Seção Sobre (Simples) -->
         <section id="about-content" class="content-section">
             <h2>Sobre Nós</h2>
@@ -167,6 +179,8 @@
 
     <script src="js/script.js"></script>
     <script type="module" src="js/supabaseClient.js"></script>
+    <script type="module" src="js/auth.js"></script>
+
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 @import url('_comum.css');
 
 img{
-width: 300px;
+width: 100px;
 }
 .quadrados{
 
@@ -17,7 +17,7 @@ width: 300px;
     border-radius: 10px;
     width: 15%;
     margin: 35px;
-    height: 300px;
+    height: 250px;
     background-color: #ffffff;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;

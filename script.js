@@ -1,187 +1,148 @@
-
+// Aguarda todo o conteúdo da página ser carregado antes de executar o script.
 document.addEventListener('DOMContentLoaded', function() {
+
+    // --- SELETORES GERAIS DE ELEMENTOS ---
+    // Pega todos os elementos que o script pode precisar interagir.
     const navLinks = document.querySelectorAll('.main-nav .nav-link');
     const contentSections = document.querySelectorAll('.content-section');
-    const subLinkButtons = document.querySelectorAll('.sub-link-button');
-    const cartIconButton = document.getElementById('cart-icon-btn');
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
+    const cartIconButton = document.getElementById('cart-icon-btn');
+    
+    // --- FUNÇÕES REUTILIZÁVEIS ---
 
-    const dynamicProductTitle = document.getElementById('dynamic-product-title');
-    const dynamicProductDescription = document.getElementById('dynamic-product-description');
-    // const dynamicProductImage = document.getElementById('dynamic-product-image'); // Para mudar imagem
-
-    // Conteúdo simulado para as seções de "Métodos" e "Dicas" e sub-links
-    const pageContents = {
-        // Para links principais
-        "metodos": {
-            title: "Nossos Métodos de Personalização",
-            description: "Descubra como transformamos produtos comuns em presentes extraordinários com nossas técnicas de personalização de ponta. Cada método é aplicado com precisão e carinho.",
-         
-        },
-        "dicas": {
-            title: "Dicas e Inspirações para Presentes",
-            description: "Precisa de ideias? Explore nossas dicas e inspire-se para encontrar ou criar o presente personalizado perfeito para qualquer ocasião. Surpreenda quem você ama!",
-            
-        },
-        // Para sub-links da home
-        "datas-especiais": {
-            title: "Presentes para Datas Especiais",
-            description: "Celebre aniversários, casamentos, formaturas e outras datas importantes com presentes que marcam. Personalize com nomes, datas ou mensagens especiais."
-        },
-        "corporativos": {
-            title: "Presentes Corporativos Únicos",
-            description: "Fortaleça sua marca e valorize seus colaboradores e clientes com presentes corporativos personalizados. Opções elegantes e criativas para todas as necessidades."
-        },
-        "criativos": {
-            title: "Solte a Criatividade: Presentes Originais",
-            description: "Para quem busca algo fora do comum. Nossa seleção de presentes criativos pode ser personalizada para refletir a personalidade de quem presenteia e de quem recebe."
-        },
-        "estampas": {
-            title: "Estampas e Impressões de Alta Qualidade",
-            description: "Utilizamos tecnologia de ponta para estampas vibrantes e duradouras em uma variedade de materiais. Ideal para camisetas, canecas, almofadas e muito mais."
-        },
-        "gravura": {
-            title: "Gravura e Corte a Laser de Precisão",
-            description: "Adicione um toque sofisticado com gravações a laser em metal, madeira, acrílico e outros materiais. Cortes precisos para designs complexos e detalhados."
-        },
-        "bordados": {
-            title: "Bordados e Patchwork Artesanais",
-            description: "Presentes com um toque artesanal e charmoso. Bordados personalizados em tecidos e aplicações de patchwork que contam histórias."
-        },
-        "tendencias": {
-            title: "Tendências Atuais em Presentes Personalizados",
-            description: "Fique por dentro do que há de mais novo e desejado no mundo dos presentes personalizados. Ideias inovadoras para você se inspirar."
-        },
-        "ocasioes": {
-            title: "O Presente Perfeito para Cada Ocasião",
-            description: "Não importa o evento, temos sugestões de presentes personalizados que se encaixam perfeitamente, desde pequenas lembranças até grandes surpresas."
-        },
-        "depoimentos": {
-            title: "Depoimentos e Experiências de Clientes",
-            description: "Veja o que nossos clientes dizem sobre seus presentes personalizados e a experiência de compra conosco. Histórias reais de satisfação e emoção."
+    /**
+     * Mostra uma seção de conteúdo específica na index.html e esconde as outras.
+     * @param {string} targetId - O ID da seção a ser exibida.
+     */
+    function showSection(targetId) {
+        // Esta função só deve rodar na index.html, que tem múltiplas seções.
+        if (document.getElementById('home-content')) {
+            contentSections.forEach(section => { 
+                section.classList.remove('active'); 
+            });
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) { 
+                targetSection.classList.add('active');
+                
+                // Atualiza o estado 'active' no link da navegação principal.
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.target === targetId);
+                });
+            }
         }
+    }
+
+    /**
+     * Filtra os produtos na página de resultados com base em um termo de busca.
+     * @param {string} searchTerm - O texto a ser procurado no nome dos produtos.
+     * @returns {number} - A quantidade de produtos encontrados.
+     */
+    const filterProducts = (searchTerm) => {
+        const products = document.querySelectorAll('.quadro');
+        let productsFound = 0;
+        products.forEach(product => {
+            const productNameElement = product.querySelector('h3');
+            if (productNameElement) {
+                const productName = productNameElement.textContent.toLowerCase().trim();
+                if (productName.includes(searchTerm)) {
+                    // Se o nome do produto corresponde, remove a classe para mostrá-lo.
+                    product.classList.remove('escondido');
+                    productsFound++;
+                } else {
+                    // Se não corresponde, adiciona a classe para escondê-lo.
+                    product.classList.add('escondido');
+                }
+            }
+        });
+        return productsFound;
     };
 
-    function showSection(targetId, contentSourceKey = null) {
-        contentSections.forEach(section => {        
-            section.classList.remove('active');
-        });
+
+    // --- LÓGICA ESPECÍFICA PARA A PÁGINA INICIAL (index.html) ---
+    // Verifica se estamos na página inicial pela presença do elemento 'home-content'.
+    if (document.getElementById('home-content')) {
+        
+        // Ativa a navegação por seções (links <span>).
         navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-
-            // Atualizar o link ativo na navegação principal
-            const activeNavLink = document.querySelector(`.main-nav .nav-link[data-target="${targetId}"]`);
-            if (activeNavLink) {
-                activeNavLink.classList.add('active');
+            if (link.tagName === 'SPAN') {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    showSection(this.dataset.target);
+                });
             }
+        });
 
-        } else {
-            console.warn(`Seção com ID "${targetId}" não encontrada.`);
+        // O ícone do carrinho (🛒) mostra a seção de login.
+        if (cartIconButton) {
+            cartIconButton.addEventListener('click', () => {
+                showSection('login-content');
+            });
         }
-    } // Final da função show section
 
-    // Navegação principal
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.dataset.target;
-            const contentSource = this.dataset.contentSource; // Para "Métodos" e "Dicas"
-            showSection(targetId, contentSource);
-        });
-    });
-
-    // Ícone do carrinho leva para a página de login
-    if (cartIconButton) {
-        cartIconButton.addEventListener('click', function() {
-            showSection('login-content');
-            // Remover a classe 'active' de todos os navLinks principais
-            navLinks.forEach(link => link.classList.remove('active'));
-        });
-    }
-
-    // Formulário de Login
-    const actualLoginForm = document.getElementById('actual-login-form');
-    if (actualLoginForm) {
-        actualLoginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            alert(`Tentativa de login com e-mail: ${email}. (Funcionalidade de login real não implementada).`);
-            // Aqui você adicionaria a lógica de login real
-        });
+        // O botão "Não Possuo Cadastro" leva para a página de cadastro.
+        const btnNaoTenho = document.getElementById('btn-nao-tenho-cadastro');
+        if (btnNaoTenho) {
+            btnNaoTenho.addEventListener('click', () => {
+                window.location.href = 'cadastro.html';
+            });
+        }
+        
+        // Inicializa a página mostrando a seção principal ('home-content').
+        showSection('home-content');
     }
     
-    // Botões de Não Possuo/Possuo Cadastro
-    const btnNaoTenho = document.getElementById('btn-nao-tenho-cadastro');
-    const btnTenho = document.getElementById('btn-tenho-cadastro');
-    if(btnNaoTenho) {
-        btnNaoTenho.addEventListener('click', () => {
-            alert("Redirecionando para a página de cadastro... (Não implementado)");
-            // Aqui você poderia mostrar um formulário de cadastro ou redirecionar
-        });
-    }
-    if(btnTenho) {
-        btnTenho.addEventListener('click', () => {
-            // Apenas garante que o form de login está visível, o que já acontece
-            // Poderia focar no campo de email, por exemplo:
-            document.getElementById('email').focus();
+    // --- LÓGICA DA PÁGINA DE CADASTRO (cadastro.html) ---
+    // Procura pelo formulário de registro.
+    const registrationForm = document.getElementById('registration-form');
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Impede o recarregamento da página.
+            const password = document.getElementById('senha').value;
+            const confirmPassword = document.getElementById('confirmar-senha').value;
+            
+            // Validação simples de senha.
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem. Por favor, tente novamente.');
+                return; // Interrompe a execução.
+            }
+            
+            alert('Cadastro realizado com sucesso! (Funcionalidade de backend não implementada)');
+            // Futuramente, aqui você enviaria os dados para um servidor.
         });
     }
 
-
-    // Formulário de Pesquisa
-    if (searchForm) {
+    // --- LÓGICA DE PESQUISA GLOBAL (para TODAS as páginas) ---
+    // Adiciona a funcionalidade de busca em qualquer página que tenha o formulário.
+    if (searchForm && searchInput) {
         searchForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const searchTerm = searchInput.value.trim();
             if (searchTerm) {
-                alert(`Você pesquisou por: "${searchTerm}". (Funcionalidade de busca real não implementada).`);
-                // Aqui você implementaria a lógica de busca nos produtos/conteúdo
-            } else {
-                alert('Por favor, digite algo para pesquisar.');
+                // Redireciona para a página de resultados, passando a busca na URL.
+                window.location.href = `resultados.html?q=${encodeURIComponent(searchTerm)}`;
             }
         });
     }
 
-     // Função para atualizar a cor
-            function atualizarCor() {
-                const corEscolhida = seletorDeCor.value; // Pega o valor hexadecimal da cor (ex: #RRGGBB)
-                
-                // Aplica a cor ao fundo do elemento de exemplo
-                if (elementoParaColorir) {
-                    elementoParaColorir.style.backgroundColor = corEscolhida;
-                }
+    // --- LÓGICA DA PÁGINA DE RESULTADOS (resultados.html) ---
+    // Roda apenas se a URL terminar com 'resultados.html'.
+    if (window.location.pathname.endsWith('resultados.html')) {
+        const resultsTitle = document.getElementById('search-results-title');
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTermFromUrl = urlParams.get('q'); // Pega o termo da URL.
 
-                // Mostra o valor hexadecimal da cor
-                if (textoCorSelecionada) {
-                    textoCorSelecionada.textContent = 'Cor atual: ' + corEscolhida.toUpperCase();
-                }
-
-                // Aqui você pode fazer outras coisas com a cor, como:
-                // - Mudar a cor do texto: elementoParaColorir.style.color = corEscolhida;
-                // - Enviar para um servidor
-                // - Salvar no localStorage, etc.
-                console.log('Cor selecionada:', corEscolhida);
-            }
-
-            // Define a cor inicial baseada no valor do input
-            if (seletorDeCor && elementoParaColorir) {
-                 atualizarCor(); // Chama uma vez para definir o estado inicial
-            }
-
-            // Adiciona um ouvinte de evento para quando a cor mudar
-            // 'input' é disparado continuamente enquanto o usuário interage com o seletor
-            // 'change' é disparado quando o seletor é fechado ou o valor final é confirmado
-            if (seletorDeCor) {
-                seletorDeCor.addEventListener('input', atualizarCor);
-            }
-
-
-    // Mostrar a seção inicial (home)
-    showSection('home-content');
+        if (searchTermFromUrl && resultsTitle) {
+            const decodedSearchTerm = decodeURIComponent(searchTermFromUrl);
+            searchInput.value = decodedSearchTerm; // Coloca o termo na barra de busca.
+            
+            const numFound = filterProducts(decodedSearchTerm.toLowerCase()); // Filtra os produtos.
+            
+            resultsTitle.textContent = `${numFound} resultado(s) para: "${decodedSearchTerm}"`; // Atualiza o título.
+        } else if (resultsTitle) {
+            // Caso a página seja acessada sem um termo de busca.
+            resultsTitle.textContent = "Faça uma busca para ver os resultados.";
+            document.querySelectorAll('.quadro').forEach(p => p.classList.add('escondido'));
+        }
+    }
 });
