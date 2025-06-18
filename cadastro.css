@@ -29,149 +29,157 @@
             align-items: center;
             gap: 10px;
         }
+
+     /* ======================================================= */
+/*    NOVO BLOCO PARA CENTRALIZAÇÃO DO FORMULÁRIO          */
 /* ======================================================= */
-/* Estilos Kawaii AZUL para o Formulário de Cadastro e Login */
+main {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    padding: 40px 20px;      /* Adiciona um respiro nas bordas da página */
+}
+
+ 
+/* ======================================================= */
+/* Estilos "Gordinho e Achatadinho" para o Formulário      */
 /* ======================================================= */
 
 /* Container principal do formulário */
 .login-form-container {
-    background-color: #f0f8ff; /* Azul "Alice Blue", bem clarinho */
-    border: 2px dashed #b0e0e6; /* Borda tracejada azul "Powder Blue" */
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(176, 224, 230, 0.2);
+    width: 100%;
+    max-width: 800px; /* << MUDANÇA: Aumentado para 800px, deixando mais "gordinho" */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 20px 40px; /* << MUDANÇA: Padding vertical menor, horizontal maior */
+    border-radius: 8px; /* << MUDANÇA: Um pouco mais arredondado */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 /* Título (Login / Crie sua Conta) */
 .login-form-container h3 {
     text-align: center;
-    color: #4682b4; /* Azul "Steel Blue" para o título */
-    font-size: 2em;
-    margin-bottom: 25px;
-    font-family: 'Comic Sans MS', 'Quicksand', sans-serif; /* Fonte amigável */
+    color: #357ABD;
+    font-size: 1.6em; /* << MUDANÇA: Título um pouco menor */
+    margin-bottom: 20px; /* << MUDANÇA: Margem inferior menor */
+    font-weight: 600;
 }
 
-/* Campos de input (email, senha, etc.) */
+/* Campos de input */
 .login-form-container input[type="text"],
 .login-form-container input[type="email"],
 .login-form-container input[type="tel"],
 .login-form-container input[type="password"] {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #b0e0e6; /* Borda azul claro */
-    border-radius: 30px; /* Bordas super arredondadas */
-    background-color: #fff;
-    font-size: 1em;
-    color: #555;
-    transition: all 0.3s ease; /* Transição suave */
-    outline: none; /* Remove a borda padrão do navegador ao clicar */
+    padding: 10px 14px; /* << MUDANÇA: Padding vertical menor */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 0.95em; /* << MUDANÇA: Fonte um pouco menor */
+    color: #333;
+    transition: all 0.2s ease-in-out;
+    outline: none;
 }
 
-/* Efeito ao focar no campo (quando o usuário clica para digitar) */
 .login-form-container input:focus {
-    border-color: #87ceeb; /* Borda fica azul "Sky Blue" */
-    box-shadow: 0 0 8px rgba(135, 206, 235, 0.4); /* Sombra suave azul */
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+    background-color: #fff;
 }
 
-/* Rótulos (Nome Completo, E-mail, etc.) */
+/* Rótulos */
 .login-form-container label {
-    color: #5f9ea0; /* Azul "Cadet Blue" para os rótulos */
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block; /* Garante que o label fique acima do campo */
+    color: #555;
+    font-weight: 600;
+    font-size: 0.85em; /* << MUDANÇA: Rótulo menor */
+    margin-bottom: 4px; /* << MUDANÇA: Margem menor */
+    display: block;
 }
 
-/* Botão principal (Cadastrar / Entrar) */
+/* Botão principal */
 .login-form-container button[type="submit"] {
     width: 100%;
-    padding: 15px;
+    padding: 12px; /* << MUDANÇA: Padding menor */
     border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #87ceeb, #b0e0e6); /* Gradiente azul fofo */
+    border-radius: 5px;
+    background-color: #4A90E2;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em; /* << MUDANÇA: Fonte menor */
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    margin-top: 5px; /* << MUDANÇA: Margem menor */
 }
 
-/* Efeito ao passar o mouse sobre o botão */
 .login-form-container button[type="submit"]:hover {
-    transform: translateY(-3px); /* Efeito de "levantar" */
-    box-shadow: 0 6px 15px rgba(176, 224, 230, 0.5);
+    background-color: #357ABD;
+    transform: translateY(-2px);
 }
 
-/* Agrupamento dos campos (fieldset) */
+/* Agrupamento dos campos */
 .login-form-container fieldset {
-    border: none; /* Removemos a borda padrão para usar a do container */
-    padding: 0;
-    margin-bottom: 20px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    padding: 10px 15px; /* << MUDANÇA: Padding bem menor */
+    margin-bottom: 15px; /* << MUDANÇA: Margem menor */
 }
 
-/* Título do fieldset (Dados Pessoais, etc.) */
 .login-form-container legend {
-    display: none; /* Escondemos a legenda para um visual mais limpo */
+    padding: 0 10px;
+    font-weight: 600;
+    color: #357ABD;
+    font-size: 0.9em; /* << MUDANÇA: Fonte menor */
 }
 
-/* Linhas com múltiplos campos (como cidade/estado) */
+/* Linhas com múltiplos campos */
 .form-row {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin-top: 15px;
 }
 
 .form-row div {
     flex: 1;
     min-width: 150px;
 }
-.login-form-container div{
-    margin-bottom: 15px;
+
+/* Espaçamento geral entre os elementos div */
+.login-form-container div {
+    margin-bottom: 8px; /* << MUDANÇA: Margem geral bem menor para "achatar" */
 }
 
 /* Container dos Termos e Condições */
 .terms-container {
     font-size: 0.9em;
-    color: #888;
+    color: #666;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 20px;
 }
 
-/* Link dentro dos Termos e Opções de Login */
+/* Links */
 .terms-container a,
 .login-options a {
-    color: #4682b4; /* Azul "Steel Blue" para os links */
+    color: #4A90E2;
     font-weight: bold;
     text-decoration: none;
 }
 .terms-container a:hover,
 .login-options a:hover {
     text-decoration: underline;
+    color: #357ABD;
 }
 
-/* Checkbox customizado (Opcional, mas dá um toque especial) */
+/* Checkbox */
 .terms-container input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #b0e0e6;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    top: 2px;
+    width: 16px;
+    height: 16px;
+    accent-color: #4A90E2;
 }
-.terms-container input[type="checkbox"]:checked {
-    background-color: #87ceeb;
-}
-.terms-container input[type="checkbox"]:checked::after {
-    content: '✔';
-    font-size: 14px;
-    color: white;
-    position: absolute;
-    left: 3px;
-    top: -1px;
+
+/* Opções de Login/Cadastro abaixo do formulário */
+.login-options {
+    text-align: center;
+    margin-top: 15px; /* << MUDANÇA: Margem menor */
+    font-size: 0.95em;
 }

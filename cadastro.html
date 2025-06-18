@@ -6,7 +6,7 @@
     <title>Crie sua Conta - Nome do Site</title>
     <!-- Usando o mesmo CSS da página inicial para consistência visual -->
     <link rel="stylesheet" href="CSS/cadastro.css">
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header>
@@ -32,7 +32,7 @@
         <section id="register-section" class="content-section active">
             <div class="login-form-container">
                 
-                <form id="registration-form">
+                <form id="registration-form" method="post">
                     <fieldset>
                         <legend>Dados Pessoais</legend>
                         <div>
