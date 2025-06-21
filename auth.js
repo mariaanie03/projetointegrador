@@ -77,4 +77,4 @@ if (form) {
         event.preventDefault();
         // ... sua lógica de handleLogin e handleSignUp
     });
-}
+    }

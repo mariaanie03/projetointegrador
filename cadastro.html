@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crie sua Conta - Nome do Site</title>
-    <!-- Usando o mesmo CSS da página inicial para consistência visual -->
-    <link rel="stylesheet" href="CSS/cadastro.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Crie sua Conta - Personalized Gift Shop</title>
+    <link rel="stylesheet" href="css/pag-cadastro.css">
 </head>
 <body>
     <header>
-        <div class="logo">X</div>
-        <div class="site-name">Nome do Site</div>
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">X</a></div>
+        <div class="site-name">Personalized Gift Shop</div>
         <div class="header-actions">
-            <form id="search-form">
-                <input type="search" id="search-input" placeholder="Buscar...">
+            <form action="resultados.html" method="GET">
+                <input type="search" name="q" placeholder="Buscar..." required>
                 <button type="submit" aria-label="Buscar">🔍</button>
             </form>
-            <div class="cart-icon" id="cart-icon-btn" aria-label="Carrinho de Compras">🛒</div>
+            <div class="cart-icon">🛒</div>
         </div>
     </header>
 
     <nav class="main-nav">
         <ul>
             <li><a href="index.html" class="nav-link">Início</a></li>
-            <li><a href="TiposdePresentesPersonalizados.html" class="nav-link">Tipos de Presentes</a></li>
         </ul>
     </nav>
 
@@ -32,7 +29,8 @@
         <section id="register-section" class="content-section active">
             <div class="login-form-container">
                 
-                <form id="registration-form" method="post">
+                <!-- O formulário agora não tem 'action' nem 'method' -->
+                <form id="registration-form">
                     <fieldset>
                         <legend>Dados Pessoais</legend>
                         <div>
@@ -46,7 +44,7 @@
                             </div>
                             <div>
                                 <label for="telefone">Telefone / Celular:</label>
-                                <input type="tel" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
+                                <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
                             </div>
                         </div>
                     </fieldset>
@@ -112,7 +110,6 @@
                     <button type="submit">Finalizar Cadastro</button>
                 </form>
 
-                
             </div>
         </section>
     </main>
@@ -121,6 +118,14 @@
         <p> © 2025 Personalized Gift Shop</p>
     </footer>
 
-    <script src="js/java.js"></script>
+
+    <script type="module">
+    // Importa o cliente Supabase e o torna globalmente acessível
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+    window.myCreateSupabaseClient = createClient;
+</script>
+
+    <!-- Não se esqueça de incluir os scripts do Supabase no index.html e aqui se for o caso -->
+    <script src="js/script.js"></script>
 </body>
 </html>

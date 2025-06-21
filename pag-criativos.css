@@ -2,7 +2,7 @@
 
 
 img{
-width: 100px;
+width: 150px;
 
 }
 .quadrados{
@@ -10,7 +10,7 @@ width: 100px;
  
     background-color: rgb(239, 240, 240);
     margin: auto;
-    width: 110%;
+    width: 100%;
     display: flex;
 }
 
@@ -18,7 +18,7 @@ width: 100px;
   
     border-radius: 10px;
     width: 15%;
-    margin: 35px;
+    margin: 37px;
     height: 250px;
     background-color: #ffffff;
     text-align: center;

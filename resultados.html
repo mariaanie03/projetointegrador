@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Busca</title>
+    <link rel="stylesheet" href="css/pag-resultado.css">
+    <style>
+        /* Estilos básicos para a grade de resultados */
+        #resultados-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+        .quadro { border: 1px solid #ddd; border-radius: 8px; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .quadro img { max-width: 100%; height: 200px; object-fit: contain; }
+        .quadro .preco { font-weight: bold; font-size: 1.2em; margin: 10px 0; }
+        .quadro .btn-ver-produto { display: inline-block; background-color: #333; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-top: 10px; transition: background-color 0.3s; }
+        .quadro .btn-ver-produto:hover { background-color: #555; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">X</a></div>
+        <div class="site-name">Personalized Gift Shop</div>
+        <div class="header-actions">
+            <form id="search-form" action="resultados.html" method="GET">
+                <input type="search" id="search-input" name="q" placeholder="Buscar..." required>
+                <button type="submit" aria-label="Buscar">🔍</button>
+            </form>
+            <div class="cart-icon" id="cart-icon-btn">🛒</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Título que será preenchido pelo JavaScript -->
+        <h2 id="search-results-title" style="text-align: center; margin: 20px;"></h2>
+
+        <!-- Grade onde os cards dos produtos serão inseridos -->
+        <div id="resultados-grid"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 Personalized Gift Shop</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
