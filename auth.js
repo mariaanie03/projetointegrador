@@ -1,80 +1,86 @@
-// Importa o cliente Supabase
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+// js/auth.js
 
-console.log("✅ auth.js: Script iniciado.");
+// Importa a função createClient que foi exposta globalmente no HTML
+const { createClient } = window.myCreateSupabaseClient;
 
-// --- INICIALIZAÇÃO DO SUPABASE ---
-try {
-    const supabaseUrl = 'https://crlcdyiuyqgkyeuiahgb.supabase.co';
-    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNybGNkeWl1eXFna3lldWlhaGdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAxNzgyNzUsImV4cCI6MjA2NTc1NDI3NX0.y_rIdqY6ducucO0lTX4KjbxdJsD10V4BImKTKizk6O4';
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-    console.log("✅ auth.js: Cliente Supabase inicializado com sucesso.");
-} catch (error) {
-    console.error("❌ auth.js: FALHA ao inicializar o cliente Supabase.", error);
-}
+// Suas credenciais do Supabase
+const supabaseUrl = 'https://crlcdyiuyqgkyeuiahgb.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNybGNkeWl1eXFna3lldWlhaGdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAxNzgyNzUsImV4cCI6MjA2NTc1NDI3NX0.y_rIdqY6ducucO0lTX4KjbxdJsD10V4BImKTKizk6O4';
 
-// --- SELETORES DE ELEMENTOS DO FORMULÁRIO ---
-console.log("✅ auth.js: Procurando elementos do formulário no DOM...");
-const form = document.getElementById('actual-login-form');
-const formTitle = document.getElementById('form-title');
-const submitBtn = document.getElementById('submit-btn');
-const btnNaoTenhoCadastro = document.getElementById('btn-nao-tenho-cadastro');
-const btnTenhoCadastro = document.getElementById('btn-tenho-cadastro');
-console.log("   > Botão 'Não Possuo Cadastro' encontrado:", btnNaoTenhoCadastro ? 'Sim' : 'Não (NULL)');
-console.log("   > Botão 'Já Possuo Cadastro' encontrado:", btnTenhoCadastro ? 'Sim' : 'Não (NULL)');
+// Inicializa o cliente Supabase
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// --- FUNÇÕES PARA ALTERNAR O MODO DO FORMULÁRIO ---
-function switchToRegisterMode() {
-    console.log("🚀 auth.js: Função switchToRegisterMode() CHAMADA.");
-    
-    // ... (o resto da lógica da função)
-    const confirmPasswordField = document.getElementById('confirm-password-field');
-    const confirmPasswordInput = document.getElementById('confirmar-senha');
+// Função para lidar com o login na página index.html
+const loginForm = document.getElementById('actual-login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Impede o envio padrão do formulário
 
-    formTitle.textContent = 'Cadastro';
-    submitBtn.textContent = 'Cadastrar';
-    if(confirmPasswordField) confirmPasswordField.style.display = 'block';
-    if(confirmPasswordInput) confirmPasswordInput.required = true;
-    if(btnNaoTenhoCadastro) btnNaoTenhoCadastro.style.display = 'none';
-    if(btnTenhoCadastro) btnTenhoCadastro.style.display = 'block';
-}
+        const email = loginForm.email.value;
+        const password = loginForm.senha.value;
 
-function switchToLoginMode() {
-    console.log("🚀 auth.js: Função switchToLoginMode() CHAMADA.");
-    
-    // ... (o resto da lógica da função)
-    const confirmPasswordField = document.getElementById('confirm-password-field');
-    const confirmPasswordInput = document.getElementById('confirmar-senha');
-    
-    formTitle.textContent = 'Login';
-    submitBtn.textContent = 'Entrar';
-    if(confirmPasswordField) confirmPasswordField.style.display = 'none';
-    if(confirmPasswordInput) confirmPasswordInput.required = false;
-    if(btnNaoTenhoCadastro) btnNaoTenhoCadastro.style.display = 'block';
-    if(btnTenhoCadastro) btnTenhoCadastro.style.display = 'none';
-}
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
 
-
-// --- EVENT LISTENERS ---
-// A verificação `if (elemento)` previne erros se o elemento não for encontrado
-if (btnNaoTenhoCadastro) {
-    console.log("✅ auth.js: Adicionando listener de clique ao botão 'Não Possuo Cadastro'.");
-    btnNaoTenhoCadastro.addEventListener('click', switchToRegisterMode);
-} else {
-    console.error("❌ auth.js: Não foi possível adicionar o listener porque o botão 'Não Possuo Cadastro' não foi encontrado.");
-}
-
-if (btnTenhoCadastro) {
-    console.log("✅ auth.js: Adicionando listener de clique ao botão 'Já Possuo Cadastro'.");
-    btnTenhoCadastro.addEventListener('click', switchToLoginMode);
-} else {
-    console.error("❌ auth.js: Não foi possível adicionar o listener porque o botão 'Já Possuo Cadastro' não foi encontrado.");
-}
-
-// O resto do seu código de submit do formulário continua aqui...
-if (form) {
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        // ... sua lógica de handleLogin e handleSignUp
+        if (error) {
+            console.error('Erro no login:', error.message);
+            alert('Falha no login: ' + error.message);
+        } else {
+            console.log('Login bem-sucedido!', data.user);
+            alert('Login realizado com sucesso!');
+            // Redirecionar para uma página de perfil ou para a home
+            window.location.href = 'index.html'; 
+        }
     });
-    }
+}
+
+// --- CÓDIGO PARA O CADASTRO (cadastro.html) ---
+const registrationForm = document.getElementById('registration-form');
+
+if (registrationForm) {
+    registrationForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const email = registrationForm.email.value;
+        const password = registrationForm.senha.value;
+        const confirmPassword = document.getElementById('confirmar-senha').value;
+        const fullName = document.getElementById('nome-completo').value;
+
+        // Validação simples de senha
+        if (password.length < 6) {
+            alert('A senha deve ter no mínimo 6 caracteres.');
+            return;
+        }
+        if (password !== confirmPassword) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        // Tenta registrar o usuário no Supabase
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                // Você pode passar dados adicionais aqui, que serão salvos na tabela auth.users
+                data: {
+                    full_name: fullName,
+                    // outros campos que você queira salvar
+                }
+            }
+        });
+
+        if (error) {
+            // Se houver um erro, exiba-o
+            console.error('Erro no cadastro:', error.message);
+            alert('Ocorreu um erro no cadastro: ' + error.message);
+        } else {
+            // Se o cadastro for bem-sucedido
+            console.log('Usuário registrado:', data.user);
+            alert('Cadastro realizado com sucesso! Verifique seu e-mail para confirmar a conta.');
+            // Opcional: redirecionar para uma página de "verifique seu e-mail" ou para a página de login
+            window.location.href = 'index.html'; 
+        }
+    });
+}
